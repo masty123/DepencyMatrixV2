@@ -9,7 +9,7 @@ public class Utils {
         String newPath = path+"/"+folder;
         File jcdFile = new File(newPath);
         String[] jcdFiles = jcdFile.list();
-        readFile read = new readFile();
+        ReadFile read = new ReadFile();
         for(String myFile : jcdFiles) {
             if (myFile.endsWith(".java")) {
                 //System.out.println(myFile.toString()+":");
@@ -25,7 +25,7 @@ public class Utils {
         String newPath = path+"/"+folder;
         File jcdFile = new File(newPath);
         String[] jcdFiles = jcdFile.list();
-        readFile read = new readFile();
+        ReadFile read = new ReadFile();
         for(String myFile : jcdFiles)
         {
             if(myFile.endsWith(".java")){
@@ -38,13 +38,13 @@ public class Utils {
     }
 
 
-    public static void calculate(String path, String packageName, String outerPackage){
+    public static PackageInfo calculate(String packageName, String path, String outerPackage){
             PackageInfo info =new PackageInfo();
             info.packageName = packageName;
             File jcdFile = new File(path+outerPackage+info.packageName);
             //Get list of files and store in our array
             String[] jcdFiles = jcdFile.list();
-            readFile read = new readFile();
+            ReadFile read = new ReadFile();
 
 
 
@@ -81,14 +81,16 @@ public class Utils {
                     recurCa(jcdFileCa.getPath(), myFile, info, outerPackage);
                 }
             }
+            
+            return info;
 
-            System.out.println("=======");
-            System.out.println("Ca = "+info.ca);
-            System.out.println("Ce = "+info.ce);
-            System.out.println("Na = "+info.na);
-            System.out.println("Nc = "+info.nc);
-            System.out.println("Abstractness: "+info.getAbstactness());
-        System.out.println("Insability: "+info.getInstability());
+//            System.out.println("=======");
+//            System.out.println("Ca = "+info.ca);
+//            System.out.println("Ce = "+info.ce);
+//            System.out.println("Na = "+info.na);
+//            System.out.println("Nc = "+info.nc);
+//            System.out.println("Abstractness: "+info.getAbstactness());
+//            System.out.println("Insability: "+info.getInstability());
         }
     }
 

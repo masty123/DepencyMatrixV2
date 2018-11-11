@@ -23,5 +23,9 @@ public class PackageInfo {
     public double getAbstactness(){
         return na/nc;
     }
+    
+    public double getDistanceFromMainSequence() {
+    	return getInstability() + getAbstactness() - 1.0;
+    }
 
 }

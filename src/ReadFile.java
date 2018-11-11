@@ -5,7 +5,7 @@ import java.nio.Buffer;
  * @author Theeruth Borisuth
  * @author Nitith Chayakul
  */
-public class readFile {
+public class ReadFile {
 
     /**
      * Read the file in the directory with recursive.
