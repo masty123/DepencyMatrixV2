@@ -7,95 +7,58 @@ import java.nio.Buffer;
  */
 public class ReadFile {
 
-    /**
-     * Read the file in the directory with recursive.
-     * @param fileToRead: directory of the file.
-     * @param info : Package info.
-     * @param outerPackage: directory of the outer package.
-     */
-    public static void readFileCa(String fileToRead, PackageInfo info, String outerPackage){
-        String eachLine = "";
+	private double ca;
+	private double ce;
+	private double nc;
+	private double na;
 
-        try{
+	public ReadFile() {
+		this.ca = 0;
+		this.ce = 0;
+		this.nc = 0;
+		this.na = 0;
+	}
 
-            BufferedReader buffReader = new BufferedReader(new FileReader(fileToRead));
-            while ((eachLine = buffReader.readLine()) != null)
-            {
-                if (eachLine.contains("import "))    {
-                    String[] temp = eachLine.split(" ");
-                    String startsWith = outerPackage+info.packageName;
-                    String packageName = startsWith.replace('/','.');
-                    if(temp[1].startsWith(packageName)){
-                        info.ca++;
-                    }
-                    break;
-                }
-            }
+	public void readInFile(String direc, String name) {
+		String jdkReleaseFile = direc + "/" + name;
+		System.out.println("rif: " + jdkReleaseFile);
+		readTextFile(jdkReleaseFile);
+	}
 
+	public void readTextFile(String fileToRead) {
+		String eachLine = "";
+		try {
+			BufferedReader buffReader = new BufferedReader(new FileReader(fileToRead));
+			while ((eachLine = buffReader.readLine()) != null) {
+				if (eachLine.contains(" extends ") || eachLine.contains(" implements "))
+					ca++;
+				if (eachLine.contains("import "))
+					ce++;
+				if (eachLine.contains(" class "))
+					nc++;
+				if (eachLine.contains(" abstract "))
+					na++;
+			}
+			buffReader.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 
+	public double getCa() {
+		return ca;
+	}
 
-            //Close BufferedReader object
-            buffReader.close();
-        }
-        catch(Exception ex)
-        {
-            ex.printStackTrace();
-        }
+	public double getCe() {
+		return ce;
+	}
 
-    }
+	public double getNc() {
+		return nc;
+	}
 
-    /**
-     * read the file from the directory.
-     * @param fileToRead: directory of the package
-     * @param info: package info
-     */
-    //Method to read a text file
-    public static void readFile(String fileToRead, PackageInfo info)
-    {
-        String eachLine = "";
+	public double getNa() {
+		return na;
+	}
 
-
-        try
-        {
-            //Count abstract classes in a package.
-            BufferedReader buffReader = new BufferedReader(new FileReader(fileToRead));
-            while ((eachLine = buffReader.readLine()) != null)
-            {
-                if (eachLine.contains(" abstract ")) {
-                    info.na++;
-                    break;
-                }
-            }
-
-
-            buffReader = new BufferedReader(new FileReader(fileToRead));
-            while ((eachLine = buffReader.readLine()) != null)
-            {
-                if (eachLine.contains("import "))    {
-                    String[] temp = eachLine.split(" ");
-                    String packageName = info.packageName.replace('/','.');
-                    if(!temp[1].startsWith(packageName)){
-                        info.ce++;
-                    }
-                    break;
-                }
-            }
-
-            buffReader = new BufferedReader(new FileReader(fileToRead));
-            while ((eachLine = buffReader.readLine()) != null)
-            {
-                if (eachLine.contains("class "))   {
-                    info.nc++;
-                }
-            }
-
-            //Close BufferedReader object
-            buffReader.close();
-
-        }
-        catch(Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
 }

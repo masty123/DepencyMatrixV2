@@ -51,8 +51,8 @@ public class Main {
     		String dis = String.valueOf(info.getDistanceFromMainSequence());
     		
     		try {
+    			System.out.println(Arrays.asList(info.packageName, in, abs, dis));
     			writer.writeLineInstant( Arrays.asList(info.packageName, in, abs, dis));
-				System.out.println(Arrays.asList(info.packageName, in, abs, dis));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
