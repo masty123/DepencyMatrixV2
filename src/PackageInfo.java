@@ -27,8 +27,6 @@ public class PackageInfo {
 		return ce/(ca+ce);
 	}
 
-
-
 	public double getAbstactness(){
 		return na/nc;
 	}
