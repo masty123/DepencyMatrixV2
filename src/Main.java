@@ -14,8 +14,9 @@ public class Main {
 //            if (!myFile.contains(".")) Utils.calculate(path + "/", myFile, outerPackage);
 //        }
     	
-    	String path = "D:/workspace/JavaSpace_oxygen/apache-log4j-2.11.1-src/log4j-core/src/main/java/";
-    	String outerPackage = "org/apache/logging/log4j/core/";
+    	String path = "D:/workspace/JavaSpace_oxygen/aries/";
+    	String outerPackage = "util/src/main/java/org/apache/aries/util/";
+    	System.out.println(path+outerPackage);
     	
     	String csvFile = "software_instability.csv";
     	CSVUtils writer = null;
