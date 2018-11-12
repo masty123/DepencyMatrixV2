@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
-//        String path = "/Users/theeruthborisuth/Documents/WSP/aries/blueprint/blueprint-api/src/main/java/";
-//        String outerPackage = "org/osgi/service/blueprint/";
+        String path = "/Users/theeruthborisuth/Documents/WSP/aries/application/application-utils/src/main/";
+        String outerPackage = "java/org/apache/aries/application/";
+        //System.out.println(path+outerPackage);
 //        File jcdFile = new File(path+outerPackage);
 //        //Get list of files and store in our array
 //        String[] jcdFiles = jcdFile.list();
@@ -16,8 +17,8 @@ public class Main {
     	
 //    	String path = "D:/workspace/JavaSpace_oxygen/apache-log4j-2.11.1-src/log4j-core/src/main/java/";
 //    	String outerPackage = "org/apache/logging/log4j/core/";
-    	String path = "D:/workspace/JavaSpace_oxygen/aries/";
-    	String outerPackage = "util/src/main/java/org/apache/aries/util/";
+//    	String path = "D:/workspace/JavaSpace_oxygen/aries/";
+//    	String outerPackage = "util/src/main/java/org/apache/aries/util/";
     	
     	System.out.println(path+outerPackage);
     	
@@ -30,7 +31,7 @@ public class Main {
 			e.printStackTrace();
 		}
         try {
-			writer.writeLineInstant(Arrays.asList("package_name", "instability", "abstactness", "distance_from_main_sequence"));
+			writer.writeLineInstant(Arrays.asList("package name", "instability", "abstractness", "distance from main sequence"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
